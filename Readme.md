@@ -1,4 +1,3 @@
-
 # koa-error
 
   Error response middleware for koa supporting:
@@ -17,7 +16,7 @@ $ npm install koa-error
 
  - `template` path to template written with [swig](http://paularmstrong.github.io/swig/)
 
-## Custom templatess
+## Custom templates
 
   By using the `template` option you can override the bland default template,
   with the following available local variables:
