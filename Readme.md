@@ -31,7 +31,7 @@ $ npm install koa-error
   - `status`
   - `code`
 
-  Here's an example:
+Here's an example:
 
 ```html
 <!DOCTYPE html>
