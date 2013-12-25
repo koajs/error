@@ -1,4 +1,3 @@
-
 /**
  * Module dependencies.
  */
@@ -59,7 +58,7 @@ function error(opts) {
             env: env,
             ctx: this,
             request: this.request,
-            response: this.response
+            response: this.response,
             error: err.message,
             stack: err.stack,
             status: err.status,
