@@ -37,6 +37,10 @@ function error(opts) {
     } catch (err) {
       this.status = err.status || 500;
 
+      // application
+      this.app.emit('error', err, this);
+
+      // accepted types
       switch (this.accepts('text', 'json', 'html')) {
         case 'text':
           if ('development' == env) this.body = err.message
