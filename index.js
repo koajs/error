@@ -62,6 +62,9 @@ function error(opts) {
           });
           break;
       }
+
+      // Delegate to app level error handling.
+      this.app.emit('error', err, this);
     }
-  }
+  };
 }
