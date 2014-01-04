@@ -33,9 +33,7 @@ function error(opts) {
   return function *error(next){
     try {
       yield next;
-      // Handle 404 upstream.
-      var status = this.status || 404;
-      if (404 == status) this.throw(404);
+      if (404 == this.status) this.throw(404);
     } catch (err) {
       this.status = err.status || 500;
 
