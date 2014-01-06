@@ -33,7 +33,7 @@ function error(opts) {
   return function *error(next){
     try {
       yield next;
-      if (404 == this.status) this.throw(404);
+      if (null == this.status) this.throw(404);
     } catch (err) {
       this.status = err.status || 500;
 
