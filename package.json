@@ -2,7 +2,7 @@
   "name": "koa-error",
   "description": "Error reponses (text, json, html) for koa",
   "repository": "koajs/error",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "keywords": [
     "koa",
     "middleware",
