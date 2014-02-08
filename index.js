@@ -41,7 +41,7 @@ function error(opts) {
       this.app.emit('error', err, this);
 
       // accepted types
-      switch (this.accepts('text', 'json', 'html')) {
+      switch (this.accepts('html', 'text', 'json')) {
         case 'text':
           if ('development' == env) this.body = err.message
           else if (err.expose) this.body = err.message
