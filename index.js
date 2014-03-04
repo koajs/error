@@ -62,7 +62,7 @@ function error(opts) {
             response: this.response,
             error: err.message,
             stack: err.stack,
-            status: err.status,
+            status: this.status,
             code: err.code
           });
           break;
