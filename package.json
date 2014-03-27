@@ -18,6 +18,6 @@
   },
   "license": "MIT",
   "dependencies": {
-    "swig": "~1.2.2"
+    "swig": "^1.3.2"
   }
 }
