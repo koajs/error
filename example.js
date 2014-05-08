@@ -10,8 +10,8 @@ var app = koa();
 app.use(error());
 
 app.use(function *(){
+  if (this.path === '/favicon.ico') return;
   if (this.path === '/404') return;
-  
   foo();
 });
 
