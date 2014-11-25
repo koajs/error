@@ -11,9 +11,19 @@
         font: 14px "Helvetica Neue", Helvetica, sans-serif;
       }
 
+      h1, h2 {
+        margin: 0;
+        padding: 10px 0;
+      }
+
       h1 {
         font-size: 2em;
-        margin-bottom: 5px;
+      }
+
+      h2 {
+        font-size: 1.2em;
+        font-weight: 200;
+        color: #aaa;
       }
 
       pre {
@@ -26,6 +36,13 @@
       <h1>Error</h1>
     <p>Looks like something broke!</p>
     {% if env == 'development' %}
+      <h2>Message:</h2>
+      <pre>
+        <code>
+{{error}}
+        </code>
+      </pre>
+      <h2>Stack:</h2>
       <pre>
         <code>
 {{stack}}
