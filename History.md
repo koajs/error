@@ -1,4 +1,16 @@
 
+1.1.3 / 2014-11-28
+==================
+
+  * pass `err.message` to the frontend
+
+1.1.2 / 2014-05-08
+==================
+
+  * Loosen swig dep
+  * Status code on default exception
+  * Fixed priority of accepted types
+
 1.1.1 / 2014-01-11
 ==================
 
@@ -16,7 +28,7 @@
  * add: humanize the response time
  * add: log when response is finished/closed, not caught upstream
 
-1.0.1 / 2013-08-22 
+1.0.1 / 2013-08-22
 ==================
 
  * fix exception handling
