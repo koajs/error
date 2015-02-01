@@ -14,12 +14,17 @@ $ npm install koa-error
 
 ## Options
 
+You have three options for rendering the error page:
+
+ - `view` a [koa-views](https://github.com/queckezz/koa-views) compatible view
+   name to be passed to `ctx.render(view, locals)`
  - `render` function taking a single `locals` argument to render the template
  - `template` path to template written with
    `[Swig](http://paularmstrong.github.io/swig/) 
-   (if `render` function not provided)
 
-If you provide a Swig template, you must include `swig` in your dependencies.
+Each option is attempted in the order listed. If you provide a Swig `template`,
+you must include `swig` in your dependencies. Likewise, if you provide a
+`view`, you must include the appropriate middleware.
 
 ## Custom templates
 

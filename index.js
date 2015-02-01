@@ -22,12 +22,15 @@ module.exports = error;
 function error(opts) {
   opts = opts || {};
 
-  // template
-  var render = opts.render;
-  if (!render) {
-    var path = opts.template || __dirname + '/error.html';
-    var swig = require('swig');
-    render = swig.compileFile(path);
+  // view or template
+  var view = opts.view;
+  if (!view) {
+    var render = opts.render;
+    if (!render) {
+      var path = opts.template || __dirname + '/error.html';
+      var swig = require('swig');
+      render = swig.compileFile(path);
+    }
   }
 
   // env
@@ -58,7 +61,7 @@ function error(opts) {
           break;
 
         case 'html':
-          this.body = render({
+          var locals = {
             env: env,
             ctx: this,
             request: this.request,
@@ -67,7 +70,9 @@ function error(opts) {
             stack: err.stack,
             status: this.status,
             code: err.code
-          });
+          };
+          if (view) return yield this.render(view, locals);
+          this.body = render(locals);
           break;
       }
     }
