@@ -2,7 +2,6 @@
  * Module dependencies.
  */
 
-var swig = require('swig');
 var http = require('http');
 
 /**
@@ -24,8 +23,12 @@ function error(opts) {
   opts = opts || {};
 
   // template
-  var path = opts.template || __dirname + '/error.html';
-  var render = swig.compileFile(path);
+  var render = opts.render;
+  if (!render) {
+    var path = opts.template || __dirname + '/error.html';
+    var swig = require('swig');
+    render = swig.compileFile(path);
+  }
 
   // env
   var env = process.env.NODE_ENV || 'development';

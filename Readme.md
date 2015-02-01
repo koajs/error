@@ -14,12 +14,17 @@ $ npm install koa-error
 
 ## Options
 
- - `template` path to template written with [swig](http://paularmstrong.github.io/swig/)
+ - `render` function taking a single `locals` argument to render the template
+ - `template` path to template written with
+   `[Swig](http://paularmstrong.github.io/swig/) 
+   (if `render` function not provided)
+
+If you provide a Swig template, you must include `swig` in your dependencies.
 
 ## Custom templates
 
-  By using the `template` option you can override the bland default template,
-  with the following available local variables:
+  By using the `render` or `template` option you can override the bland default
+  template, with the following available local variables:
 
   - `env`
   - `ctx`
@@ -30,7 +35,7 @@ $ npm install koa-error
   - `status`
   - `code`
 
-Here's an example:
+Here's an example Swig template:
 
 ```html
 <!DOCTYPE html>
