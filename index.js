@@ -2,7 +2,6 @@
  * Module dependencies.
  */
 
-var swig = require('swig');
 var http = require('http');
 
 /**
@@ -20,12 +19,13 @@ module.exports = error;
  * @api public
  */
 
-function error(opts) {
+function error(opts, renderEngine) {
   opts = opts || {};
 
   // template
   var path = opts.template || __dirname + '/error.html';
-  var render = swig.compileFile(path);
+  var compileFunction = opts.compileFunction || 'compileFile';
+  var render = renderEngine[compileFunction](path);
 
   // env
   var env = process.env.NODE_ENV || 'development';
