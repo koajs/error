@@ -15,6 +15,7 @@ $ npm install koa-error
 ## Options
 
  - `template` path to template written with [swig](http://paularmstrong.github.io/swig/)
+ - `compileFunction` render engine's function that compiles the template. Defaults to `compileFile` from [swig](http://paularmstrong.github.io/swig/)
 
 ## Custom templates
 
