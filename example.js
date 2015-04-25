@@ -5,9 +5,10 @@
 
 var koa = require('koa');
 var error = require('./');
+var swig = require('swig');
 var app = koa();
 
-app.use(error());
+app.use(error({}, swig));
 
 app.use(function *(){
   if (this.path === '/404') return;
