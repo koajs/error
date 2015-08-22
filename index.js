@@ -43,18 +43,21 @@ function error(opts) {
       // accepted types
       switch (this.accepts('html', 'text', 'json')) {
         case 'text':
+          this.type = 'text/plain';
           if ('development' == env) this.body = err.message
           else if (err.expose) this.body = err.message
           else throw err;
           break;
 
         case 'json':
+          this.type = 'application/json';
           if ('development' == env) this.body = { error: err.message }
           else if (err.expose) this.body = { error: err.message }
           else this.body = { error: http.STATUS_CODES[this.status] }
           break;
 
         case 'html':
+          this.type = 'text/html';
           this.body = render({
             env: env,
             ctx: this,
