@@ -14,7 +14,7 @@
     "error.html"
   ],
   "devDependencies": {
-    "koa": "koajs/koa"
+    "koa": "^2.0.0"
   },
   "license": "MIT",
   "dependencies": {
