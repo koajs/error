@@ -3,15 +3,14 @@
  * Module dependencies.
  */
 
-var koa = require('koa');
+var Koa = require('koa');
 var error = require('./');
-var app = koa();
+var app = new Koa();
 
 app.use(error());
 
-app.use(function *(){
-  if (this.path === '/404') return;
-  
+app.use(function(ctx) {
+  if (ctx.request.url === '/404') return Promise.resolve();
   foo();
 });
 
