@@ -3,15 +3,17 @@
  * Module dependencies.
  */
 
+var error = require('../');
 var koa = require('koa');
-var error = require('./');
 var app = koa();
 
-app.use(error());
+app.use(error({
+  template: __dirname + '/error.html'
+}));
 
 app.use(function *(){
   if (this.path === '/404') return;
-  
+
   foo();
 });
 
