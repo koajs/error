@@ -1,9 +1,12 @@
+
+'use strict';
+
 /**
  * Module dependencies.
  */
 
-var swig = require('swig');
-var http = require('http');
+const render = require('co-render');
+const http = require('http');
 
 /**
  * Expose `error`.
@@ -23,12 +26,16 @@ module.exports = error;
 function error(opts) {
   opts = opts || {};
 
+  const engine = opts.engine || 'swig'
+
   // template
-  var path = opts.template || __dirname + '/error.html';
-  var render = swig.compileFile(path);
+  const path = opts.template || __dirname + '/error.html';
 
   // env
-  var env = process.env.NODE_ENV || 'development';
+  const env = process.env.NODE_ENV || 'development';
+
+  var cache = opts.cache;
+  if (null == cache) cache = 'development' != env;
 
   return function *error(next){
     try {
@@ -58,7 +65,9 @@ function error(opts) {
 
         case 'html':
           this.type = 'text/html';
-          this.body = render({
+          this.body = yield render(path, {
+            engine: engine,
+            cache: cache,
             env: env,
             ctx: this,
             request: this.request,

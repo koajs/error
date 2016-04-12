@@ -14,7 +14,9 @@ $ npm install koa-error
 
 ## Options
 
- - `template` path to template written with [swig](http://paularmstrong.github.io/swig/)
+ - `template` path to template written with your template engine
+ - `engine` template engine name passed to [consolidate](https://github.com/tj/consolidate.js), default: `swig`
+ - `cache` cached compiled functions, default: `NODE_ENV != 'development'`
 
 ## Custom templates
 
