@@ -1,14 +1,17 @@
 
+'use strict';
+
 /**
  * Module dependencies.
  */
 
-var error = require('../');
-var koa = require('koa');
-var app = koa();
+const join = require('path').join;
+const error = require('../');
+const koa = require('koa');
+const app = koa();
 
 app.use(error({
-  template: __dirname + '/error.html'
+  template: join(__dirname, '../error.html')
 }));
 
 app.use(function *(){
