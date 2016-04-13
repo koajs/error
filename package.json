@@ -2,7 +2,7 @@
   "name": "koa-error",
   "description": "Error reponses (text, json, html) for koa",
   "repository": "koajs/error",
-  "version": "1.1.3",
+  "version": "2.0.0",
   "scripts": {
     "test": "NODE_ENV=test mocha --reporter spec",
     "test-cov": "NODE_ENV=test istanbul cover ./node_modules/.bin/_mocha",

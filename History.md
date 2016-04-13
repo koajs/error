@@ -1,4 +1,10 @@
 
+2.0.0 / 2016-04-13
+==================
+
+  * refactor: use co-render (consolidate), add ability to inject other render engines
+  * add test
+
 1.1.3 / 2014-11-28
 ==================
 
