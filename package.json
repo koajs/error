@@ -3,6 +3,11 @@
   "description": "Error reponses (text, json, html) for koa",
   "repository": "koajs/error",
   "version": "1.1.3",
+  "scripts": {
+    "test": "NODE_ENV=test mocha --reporter spec",
+    "test-cov": "NODE_ENV=test istanbul cover ./node_modules/.bin/_mocha",
+    "test-travis": "NODE_ENV=test istanbul cover ./node_modules/.bin/_mocha --report lcovonly"
+  },
   "keywords": [
     "koa",
     "middleware",
@@ -13,12 +18,16 @@
     "index.js",
     "error.html"
   ],
+  "dependencies": {
+    "co-render": "1"
+  },
   "devDependencies": {
+    "ejs": "2",
+    "istanbul": "0",
     "koa": "1",
+    "mocha": "2",
+    "supertest": "1",
     "swig": "1"
   },
-  "license": "MIT",
-  "dependencies": {
-    "co-render": "1",
-  }
+  "license": "MIT"
 }
