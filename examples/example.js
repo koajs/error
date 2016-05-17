@@ -5,18 +5,18 @@
  * Module dependencies.
  */
 
-const join = require('path').join;
+const { join } = require('path');
 const error = require('../');
-const koa = require('koa');
-const app = koa();
+const Koa = require('koa');
+const app = new Koa();
 
 app.use(error({
   engine: 'lodash',
   template: join(__dirname, '../error.html')
 }));
 
-app.use(function *(){
-  if (this.path === '/404') return;
+app.use(async function (ctx){
+  if (ctx.path === '/404') return;
 
   foo();
 });
