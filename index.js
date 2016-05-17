@@ -44,8 +44,12 @@ function error(opts) {
     } catch (err) {
       this.status = err.status || 500;
 
-      // application
-      this.app.emit('error', err, this);
+      // only emit application errors only if
+      // we have listeners to prevent node from
+      // handling the error itself.
+      if (this.app.listeners().length) {
+        this.app.emit('error', err, this);
+      }
 
       // accepted types
       switch (this.accepts('html', 'text', 'json')) {
