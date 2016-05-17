@@ -11,6 +11,7 @@ const koa = require('koa');
 const app = koa();
 
 app.use(error({
+  engine: 'lodash',
   template: join(__dirname, '../error.html')
 }));
 

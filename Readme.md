@@ -15,7 +15,7 @@ $ npm install koa-error
 ## Options
 
  - `template` path to template written with your template engine
- - `engine` template engine name passed to [consolidate](https://github.com/tj/consolidate.js), default: `swig`
+ - `engine` template engine name passed to [consolidate](https://github.com/tj/consolidate.js)
  - `cache` cached compiled functions, default: `NODE_ENV != 'development'`
 
 ## Custom templates
@@ -32,7 +32,41 @@ $ npm install koa-error
   - `status`
   - `code`
 
-Here's an example:
+Here are some examples:
+
+### Pug (formerly jade)
+
+```js
+app.use(error({
+  engine: 'pug',
+  template: __dirname + '/error.pug'
+}));
+```
+
+```jade
+doctype html
+html
+  head
+    title= 'Error - ' + status
+  body
+    #error
+      h1 Error
+      p Looks like something broke!
+      if env == 'development'
+        h2 Message:
+        pre: code= error
+        h2 Stack:
+        pre: code= stack
+```
+
+### Nunjucks
+
+```js
+app.use(error({
+  engine: 'nunjucks',
+  template: __dirname + '/error.njk'
+}));
+```
 
 ```html
 <!DOCTYPE html>

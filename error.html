@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Error - {{status}}</title>
+    <title>Error - <%- status %></title>
     <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
     <style>
@@ -35,20 +35,20 @@
     <div id="error">
       <h1>Error</h1>
     <p>Looks like something broke!</p>
-    {% if env == 'development' %}
+    <% if (env === 'development') { %>
       <h2>Message:</h2>
       <pre>
         <code>
-{{error}}
+<%- error %>
         </code>
       </pre>
       <h2>Stack:</h2>
       <pre>
         <code>
-{{stack}}
+<%- stack %>
         </code>
       </pre>
-    {% endif %}
+    <% } %>
     </div>
   </body>
 </html>

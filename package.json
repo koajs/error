@@ -19,7 +19,8 @@
     "error.html"
   ],
   "dependencies": {
-    "co-render": "1"
+    "co-render": "1",
+    "lodash": "4"
   },
   "devDependencies": {
     "ejs": "2",

@@ -26,7 +26,7 @@ module.exports = error;
 function error(opts) {
   opts = opts || {};
 
-  const engine = opts.engine || 'swig'
+  const engine = opts.engine || 'lodash';
 
   // template
   const path = opts.template || __dirname + '/error.html';
