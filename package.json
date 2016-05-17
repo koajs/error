@@ -19,13 +19,13 @@
     "error.html"
   ],
   "dependencies": {
-    "co-render": "1",
+    "consolidate": "^0.14.1",
     "lodash": "4"
   },
   "devDependencies": {
     "ejs": "2",
     "istanbul": "0",
-    "koa": "1",
+    "koa": "2",
     "mocha": "2",
     "supertest": "1",
     "swig": "1"
