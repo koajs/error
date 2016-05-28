@@ -3,16 +3,16 @@
 
 const request = require('supertest');
 const error = require('../');
-const koa = require('koa');
+const Koa = require('koa');
 
 describe('koa-error', () => {
   it('default', done => {
-    const app = koa();
+    const app = new Koa();
 
     app.use(error());
 
-    app.use(function *(){
-      foo();
+    app.use(function (ctx){
+      return foo();
     });
 
     request(app.listen())
@@ -24,15 +24,15 @@ describe('koa-error', () => {
   })
 
   it('use ejs', done => {
-    const app = koa();
+    const app = new Koa();
 
     app.use(error({
       template: __dirname + '/error.ejs',
       engine: 'ejs'
     }));
 
-    app.use(function *(){
-      foo();
+    app.use(function (ctx){
+      return foo();
     });
 
     request(app.listen())
