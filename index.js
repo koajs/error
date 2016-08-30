@@ -32,7 +32,7 @@ function error(opts) {
   const path = opts.template || __dirname + '/error.html';
 
   // env
-  const env = process.env.NODE_ENV || 'development';
+  const env = process.env.KOA_ERROR_ENV || process.env.NODE_ENV || 'development';
 
   var cache = opts.cache;
   if (null == cache) cache = 'development' != env;
