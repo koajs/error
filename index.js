@@ -42,7 +42,7 @@ function error(opts) {
       await next();
       if (404 == ctx.response.status && !ctx.response.body) ctx.throw(404);
     } catch (err) {
-      ctx.status = err.status || 500;
+      ctx.status = 'number' == typeof err.status ? err.status : 500
 
       // application
       ctx.app.emit('error', err, ctx);
