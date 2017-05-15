@@ -1,18 +1,19 @@
 
-'use strict';
+'use strict'
 
 /**
  * Module dependencies.
  */
 
-const consolidate = require('consolidate');
-const http = require('http');
+const consolidate = require('consolidate')
+const { join } = require('path')
+const http = require('http')
 
 /**
  * Expose `error`.
  */
 
-module.exports = error;
+module.exports = error
 
 /**
  * Error middleware.
@@ -23,48 +24,48 @@ module.exports = error;
  * @api public
  */
 
-function error(opts) {
-  opts = opts || {};
+function error (opts) {
+  opts = opts || {}
 
-  const engine = opts.engine || 'lodash';
+  const engine = opts.engine || 'lodash'
 
   // template
-  const path = opts.template || __dirname + '/error.html';
+  const path = opts.template || join(__dirname, '/error.html')
 
   // env
-  const env = process.env.NODE_ENV || 'development';
+  const env = process.env.NODE_ENV || 'development'
 
-  var cache = opts.cache;
-  if (null == cache) cache = 'development' != env;
+  var cache = opts.cache
+  if (cache == null) cache = env !== 'development'
 
-  return async function error(ctx, next){
+  return async function error (ctx, next) {
     try {
-      await next();
-      if (404 == ctx.response.status && !ctx.response.body) ctx.throw(404);
+      await next()
+      if (ctx.response.status === 404 && !ctx.response.body) ctx.throw(404)
     } catch (err) {
-      ctx.status = 'number' == typeof err.status ? err.status : 500
+      ctx.status = typeof err.status === 'number' ? err.status : 500
 
       // application
-      ctx.app.emit('error', err, ctx);
+      ctx.app.emit('error', err, ctx)
 
       // accepted types
       switch (ctx.accepts('html', 'text', 'json')) {
         case 'text':
-          ctx.type = 'text/plain';
-          if ('development' == env) ctx.body = err.message
+          ctx.type = 'text/plain'
+          if (env === 'development') ctx.body = err.message
           else if (err.expose) ctx.body = err.message
-          else throw err;
-          break;
+          else throw err
+          break
 
         case 'json':
-          ctx.type = 'application/json';
-          if ('development' == env) ctx.body = { error: err.message }
+          ctx.type = 'application/json'
+          if (env === 'development') ctx.body = { error: err.message }
           else if (err.expose) ctx.body = { error: err.message }
           else ctx.body = { error: http.STATUS_CODES[ctx.status] }
-          break;
+          break
 
         case 'html':
-          ctx.type = 'text/html';
+          ctx.type = 'text/html'
           ctx.body = await consolidate[engine](path, {
             cache: cache,
             env: env,
@@ -75,8 +76,8 @@ function error(opts) {
             stack: err.stack,
             status: ctx.status,
             code: err.code
-          });
-          break;
+          })
+          break
       }
     }
   }
