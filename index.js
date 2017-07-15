@@ -52,15 +52,15 @@ function error (opts) {
       switch (ctx.accepts('html', 'text', 'json')) {
         case 'text':
           ctx.type = 'text/plain'
-          if (env === 'development') ctx.body = err.message
-          else if (err.expose) ctx.body = err.message
+          if (env === 'development') ctx.body = err.stack
+          else if (err.expose) ctx.body = err.stack
           else throw err
           break
 
         case 'json':
           ctx.type = 'application/json'
-          if (env === 'development') ctx.body = { error: err.message }
-          else if (err.expose) ctx.body = { error: err.message }
+          if (env === 'development') ctx.body = { error: err.message, stack: err.stack }
+          else if (err.expose) ctx.body = { error: err.message, stack: err.stack }
           else ctx.body = { error: http.STATUS_CODES[ctx.status] }
           break
 
