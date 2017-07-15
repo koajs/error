@@ -33,7 +33,7 @@ function error (opts) {
   const path = opts.template || join(__dirname, '/error.html')
 
   // env
-  const env = process.env.NODE_ENV || 'development'
+  const env = opts.env || process.env.NODE_ENV || 'development'
 
   var cache = opts.cache
   if (cache == null) cache = env !== 'development'

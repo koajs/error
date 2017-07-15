@@ -17,6 +17,7 @@ $ npm install koa-error
  - `template` path to template written with your template engine
  - `engine` template engine name passed to [consolidate](https://github.com/tj/consolidate.js)
  - `cache` cached compiled functions, default: `NODE_ENV != 'development'`
+ - `env` force a NODE_ENV, default: `development`
 
 ## Custom templates
 
