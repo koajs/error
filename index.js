@@ -29,6 +29,8 @@ function error (opts) {
 
   const engine = opts.engine || 'lodash'
 
+  const accepts = opts.accepts || [ 'html', 'text', 'json' ]
+
   // template
   const path = opts.template || join(__dirname, '/error.html')
 
@@ -49,7 +51,7 @@ function error (opts) {
       ctx.app.emit('error', err, ctx)
 
       // accepted types
-      switch (ctx.accepts('html', 'text', 'json')) {
+      switch (ctx.accepts.apply(ctx, accepts)) {
         case 'text':
           ctx.type = 'text/plain'
           if (env === 'development') ctx.body = err.message
