@@ -1,3 +1,7 @@
+3.1.0 / 2017-07-23
+
+  * added a `stack` field to json when `NODE_ENV=development`
+
 3.0.2 / 2017-07-23
 
   * added option `env`
