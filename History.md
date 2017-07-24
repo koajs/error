@@ -1,3 +1,7 @@
+3.0.2 / 2017-07-23
+
+  * added option `env`
+  * added option `accepts`
 
 3.0.1 / 2017-05-15
 ==================
