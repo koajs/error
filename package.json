@@ -20,21 +20,21 @@
     "error.html"
   ],
   "dependencies": {
-    "consolidate": "^0.14.1",
-    "lodash": "4"
+    "consolidate": "^0.15.0",
+    "lodash": "^4.17.4"
   },
   "devDependencies": {
-    "ejs": "2",
-    "eslint": "^3.19.0",
-    "eslint-config-standard": "^10.2.1",
-    "eslint-plugin-import": "^2.2.0",
-    "eslint-plugin-node": "^4.2.2",
-    "eslint-plugin-promise": "^3.5.0",
+    "ejs": "^2.5.7",
+    "eslint": "^4.15.0",
+    "eslint-config-standard": "^11.0.0-beta.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-node": "^5.2.1",
+    "eslint-plugin-promise": "^3.6.0",
     "eslint-plugin-standard": "^3.0.1",
-    "istanbul": "0",
-    "koa": "2",
-    "mocha": "3",
-    "supertest": "3"
+    "istanbul": "^0.4.5",
+    "koa": "^2.4.1",
+    "mocha": "^3.5.3",
+    "supertest": "^3.0.0"
   },
   "license": "MIT"
 }
