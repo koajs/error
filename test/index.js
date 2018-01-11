@@ -17,11 +17,11 @@ describe('koa-error', () => {
     })
 
     request(app.listen())
-    .get('/')
-    .expect(500)
-    .expect('Content-Type', 'text/html; charset=utf-8')
-    .expect(/<title>Error - 500<\/title>/)
-    .end(done)
+      .get('/')
+      .expect(500)
+      .expect('Content-Type', 'text/html; charset=utf-8')
+      .expect(/<title>Error - 500<\/title>/)
+      .end(done)
   })
 
   it('use ejs', done => {
@@ -37,11 +37,11 @@ describe('koa-error', () => {
     })
 
     request(app.listen())
-    .get('/')
-    .expect(500)
-    .expect('Content-Type', 'text/html; charset=utf-8')
-    .expect(/<title>Error by ejs - 500<\/title>/)
-    .end(done)
+      .get('/')
+      .expect(500)
+      .expect('Content-Type', 'text/html; charset=utf-8')
+      .expect(/<title>Error by ejs - 500<\/title>/)
+      .end(done)
   })
 
   it('ignores bad statuses', done => {
@@ -56,10 +56,10 @@ describe('koa-error', () => {
     })
 
     request(app.listen())
-    .get('/')
-    .expect(500)
-    .expect('Content-Type', 'text/html; charset=utf-8')
-    .expect(/<title>Error - 500<\/title>/)
-    .end(done)
+      .get('/')
+      .expect(500)
+      .expect('Content-Type', 'text/html; charset=utf-8')
+      .expect(/<title>Error - 500<\/title>/)
+      .end(done)
   })
 })
