@@ -2,7 +2,7 @@
   "name": "koa-error",
   "description": "Error reponses (text, json, html) for koa",
   "repository": "koajs/error",
-  "version": "3.1.0",
+  "version": "3.1.1",
   "scripts": {
     "lint": "eslint --fix .",
     "test": "NODE_ENV=test mocha --reporter spec",
