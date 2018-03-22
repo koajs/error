@@ -61,14 +61,15 @@ function error (opts) {
 
         case 'json':
           ctx.type = 'application/json'
-          if (env === 'development') ctx.body = { error: err.message, stack: err.stack }
-          else if (err.expose) ctx.body = { error: err.message }
+          if (env === 'development') ctx.body = { error: err.message, stack: err.stack, originalError: err }
+          else if (err.expose) ctx.body = { error: err.message, originalError: err }
           else ctx.body = { error: http.STATUS_CODES[ctx.status] }
           break
 
         case 'html':
           ctx.type = 'text/html'
           ctx.body = await consolidate[engine](path, {
+            originalError: err,
             cache: cache,
             env: env,
             ctx: ctx,
