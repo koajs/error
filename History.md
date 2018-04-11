@@ -1,4 +1,9 @@
 
+3.2.0 / 2018-04-11
+==================
+
+  * Provide original error, which may contain custom properties. (#33)
+
 3.1.1 / 2018-01-11
 ==================
 
