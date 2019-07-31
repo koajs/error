@@ -29,8 +29,6 @@ function error (opts) {
 
   let { options } = opts
 
-  console.log(options)
-
   const engine = opts.engine || 'lodash'
 
   const accepts = opts.accepts || [ 'html', 'text', 'json' ]
