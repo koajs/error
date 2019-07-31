@@ -27,6 +27,8 @@ module.exports = error
 function error (opts) {
   opts = opts || {}
 
+  let { options } = opts
+
   const engine = opts.engine || 'lodash'
 
   const accepts = opts.accepts || [ 'html', 'text', 'json' ]
@@ -78,7 +80,8 @@ function error (opts) {
             error: err.message,
             stack: err.stack,
             status: ctx.status,
-            code: err.code
+            code: err.code,
+            options: options
           })
           break
       }
