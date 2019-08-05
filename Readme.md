@@ -16,6 +16,7 @@ $ npm install koa-error
 
  - `template` path to template written with your template engine
  - `engine` template engine name passed to [consolidate](https://github.com/tj/consolidate.js)
+ - `options` template engine options passed to [consolidate](https://github.com/tj/consolidate.js), [more-consolidate-options](https://github.com/tj/consolidate.js/blob/master/lib/consolidate.js)
  - `cache` cached compiled functions, default: `NODE_ENV != 'development'`
  - `env` force a NODE_ENV, default: `development`
  - `accepts` mimetypes passed to [ctx.accepts](https://github.com/koajs/koa/blob/master/docs/api/request.md#requestacceptstypes), default: `[ 'html', 'text', 'json' ]`
