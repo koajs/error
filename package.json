@@ -7,7 +7,9 @@
     "lint": "eslint --fix .",
     "test": "NODE_ENV=test mocha --reporter spec",
     "test-cov": "NODE_ENV=test istanbul cover ./node_modules/.bin/_mocha",
-    "test-travis": "NODE_ENV=test istanbul cover ./node_modules/.bin/_mocha --report lcovonly"
+    "test-travis": "NODE_ENV=test istanbul cover ./node_modules/.bin/_mocha --report lcovonly",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "keywords": [
     "koa",
@@ -21,7 +23,8 @@
   ],
   "dependencies": {
     "consolidate": "^0.15.0",
-    "lodash": "^4.17.4"
+    "lodash": "^4.17.4",
+    "snyk": "^1.316.2"
   },
   "devDependencies": {
     "ejs": "^2.5.7",
@@ -36,5 +39,6 @@
     "mocha": "^3.5.3",
     "supertest": "^3.0.0"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "snyk": true
 }
