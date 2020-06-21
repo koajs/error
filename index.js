@@ -27,6 +27,8 @@ module.exports = error
 function error (opts) {
   opts = opts || {}
 
+  let { options } = opts
+
   const engine = opts.engine || 'lodash'
 
   const accepts = opts.accepts || [ 'html', 'text', 'json' ]
@@ -68,7 +70,7 @@ function error (opts) {
 
         case 'html':
           ctx.type = 'text/html'
-          ctx.body = await consolidate[engine](path, {
+          ctx.body = await consolidate[engine](path, Object.assign({
             originalError: err,
             cache: cache,
             env: env,
@@ -79,7 +81,7 @@ function error (opts) {
             stack: err.stack,
             status: ctx.status,
             code: err.code
-          })
+          }, options))
           break
       }
     }
