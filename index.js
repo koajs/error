@@ -61,7 +61,7 @@ function error (opts) {
 
         case 'json':
           ctx.type = 'application/json'
-          if (env === 'development') ctx.body = { error: err.message, stack: err.stack, originalError: err }
+          if (env === 'development') ctx.body = { error: err.message, stack: err.stack.split('\n'), originalError: err }
           else if (err.expose) ctx.body = { error: err.message, originalError: err }
           else ctx.body = { error: http.STATUS_CODES[ctx.status] }
           break
