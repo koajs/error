@@ -1,4 +1,3 @@
-
 'use strict'
 
 /**
@@ -24,14 +23,10 @@ module.exports = error
  * @api public
  */
 
-function error (opts) {
-  opts = opts || {}
-
-  let { options } = opts
-
+function error (opts = {}) {
+  // init
   const engine = opts.engine || 'lodash'
-
-  const accepts = opts.accepts || [ 'html', 'text', 'json' ]
+  const accepts = opts.accepts || ['html', 'text', 'json']
 
   // template
   const path = opts.template || join(__dirname, '/error.html')
@@ -39,9 +34,10 @@ function error (opts) {
   // env
   const env = opts.env || process.env.NODE_ENV || 'development'
 
-  var cache = opts.cache
-  if (cache == null) cache = env !== 'development'
+  // cache
+  const cache = opts.cache != null ? opts.cache : env !== 'development'
 
+  //
   return async function error (ctx, next) {
     try {
       await next()
@@ -56,16 +52,18 @@ function error (opts) {
       switch (ctx.accepts.apply(ctx, accepts)) {
         case 'text':
           ctx.type = 'text/plain'
-          if (env === 'development') ctx.body = err.message
-          else if (err.expose) ctx.body = err.message
-          else throw err
+          if (env === 'development' || err.expose) {
+            ctx.body = err.message
+          } else {
+            throw err
+          }
           break
 
         case 'json':
           ctx.type = 'application/json'
-          if (env === 'development') ctx.body = { error: err.message, stack: err.stack, originalError: err }
-          else if (err.expose) ctx.body = { error: err.message, originalError: err }
-          else ctx.body = { error: http.STATUS_CODES[ctx.status] }
+          ctx.body = (env === 'development' || err.expose)
+            ? { error: err.message, stack: err.stack, originalError: err }
+            : { error: http.STATUS_CODES[ctx.status] }
           break
 
         case 'html':
@@ -81,7 +79,7 @@ function error (opts) {
             stack: err.stack,
             status: ctx.status,
             code: err.code
-          }, options))
+          }, opts.options))
           break
       }
     }

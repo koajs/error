@@ -3,11 +3,15 @@
   "description": "Error reponses (text, json, html) for koa",
   "repository": "koajs/error",
   "version": "3.2.0",
+  "files": [
+    "index.js",
+    "error.html"
+  ],
   "scripts": {
     "lint": "eslint --fix .",
-    "test": "NODE_ENV=test mocha --reporter spec",
-    "test-cov": "NODE_ENV=test istanbul cover ./node_modules/.bin/_mocha",
-    "test-travis": "NODE_ENV=test istanbul cover ./node_modules/.bin/_mocha --report lcovonly"
+    "test": "mocha --exit",
+    "cov": "nyc npm run test",
+    "ci": "npm run lint && npm run cov"
   },
   "keywords": [
     "koa",
@@ -15,26 +19,29 @@
     "error",
     "page"
   ],
-  "files": [
-    "index.js",
-    "error.html"
-  ],
+  "license": "MIT",
   "dependencies": {
-    "consolidate": "^0.15.0",
-    "lodash": "^4.17.4"
+    "consolidate": "^1.0.4",
+    "lodash": "^4.17.21"
   },
   "devDependencies": {
-    "ejs": "^2.5.7",
-    "eslint": "^4.15.0",
-    "eslint-config-standard": "^11.0.0-beta.0",
-    "eslint-plugin-import": "^2.8.0",
-    "eslint-plugin-node": "^5.2.1",
-    "eslint-plugin-promise": "^3.6.0",
-    "eslint-plugin-standard": "^3.0.1",
-    "istanbul": "^0.4.5",
-    "koa": "^2.4.1",
-    "mocha": "^3.5.3",
-    "supertest": "^3.0.0"
+    "ejs": "^3.1.10",
+    "eslint": "^7.8.1",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "koa": "^2.16.0",
+    "mocha": "^11.1.0",
+    "nyc": "^17.1.0",
+    "supertest": "^7.0.0"
   },
-  "license": "MIT"
+  "enignes": {
+    "node": ">= 10"
+  },
+  "bugs": {
+    "url": "https://github.com/koajs/error/issues"
+  },
+  "homepage": "https://github.com/koajs/error#readme"
 }
