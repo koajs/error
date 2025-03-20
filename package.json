@@ -2,7 +2,7 @@
   "name": "koa-error",
   "description": "Error reponses (text, json, html) for koa",
   "repository": "koajs/error",
-  "version": "3.2.0",
+  "version": "4.0.0",
   "files": [
     "index.js",
     "error.html"

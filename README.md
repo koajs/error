@@ -18,7 +18,7 @@ $ yarn add koa-error
 ## Options
 
 - `template` path to template written with your template engine, default: `./error.html`
-- `engine` template engine name passed to [consolidate](https://github.com/tj/consolidate.js), default: `lodash`
+- `engine` template engine name passed to [consolidate](https://github.com/ladjs/consolidate), default: `lodash`
 - `cache` cached compiled functions, default: `NODE_ENV != 'development'`
 - `env` force a NODE_ENV, default: `development`
 - `accepts` mimetypes passed to [ctx.accepts](https://github.com/koajs/koa/blob/master/docs/api/request.md#requestacceptstypes), default: `[ 'html', 'text', 'json' ]`
@@ -108,10 +108,9 @@ app.use(
 
 #### Custom filters, use macro,block in Nunjucks
 
-koa-error engine tool base on [consolidate](https://github.com/tj/consolidate.js), you can also set consolidate options
+koa-error engine tool base on [consolidate](https://github.com/ladjs/consolidate), you can also set consolidate options
 
-> [more-nunjucks-options](https://github.com/tj/consolidate.js/blob/master/lib/consolidate.js#L1317-L1370)
-> `app.js`:
+> [more-nunjucks-options](https://github.com/ladjs/consolidate/blob/master/lib/consolidate.js#L1436-L1488) > `app.js`:
 
 ```js
 //...

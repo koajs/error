@@ -1,4 +1,10 @@
 
+4.0.0 / 2025-03-20
+==================
+
+  * Add options in opts for consolidate[engine] (#36)
+  * Modernize the module (#42)
+
 3.2.0 / 2018-04-11
 ==================
 
