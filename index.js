@@ -27,7 +27,7 @@ function error (opts = {}) {
   // init
   const engine = opts.engine || 'lodash'
   const accepts = opts.accepts || ['html', 'text', 'json']
-  
+
   // template
   const path = opts.template || join(__dirname, '/error.html')
 
